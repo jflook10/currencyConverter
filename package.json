@@ -1,0 +1,21 @@
+{
+  "name": "currency-exchange",
+  "version": "0.0.9",
+  "description": "converts a user’s selected base currency and outputs the equivalent money value of the exchange currency",
+  "keywords": [],
+  "main": "index.js",
+  "dependencies": {
+    "money": "0.2.0",
+    "react": "16.0.0",
+    "react-dom": "16.0.0"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
