@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import ReactDOM from "react-dom";
-import CurrencyForm from './CurrencyForm'
+import CurrencyForm from './components/CurrencyForm'
 import "./styles.css";
-import {currenciesURL} from "./utils/currencies";
+import {currenciesURL, exchangeRateURL} from "./utils/currencies";
+import Header from "./components/Header";
 
 class App extends Component {
     state = {
         loadedCurrency: false,
+        loadedExchangeRates: false,
         currencyOptions: null,
+        exchangeRates: null,
     }
 
     componentDidMount() {
@@ -22,7 +25,6 @@ class App extends Component {
                         loadedCurrency: true,
                         currencyOptions: arrResult
                     });
-                    console.log({arrResult})
                 },
                 (error) => {
                     this.setState({
@@ -31,10 +33,29 @@ class App extends Component {
                     console.log(error)
                 }
             )
+        fetch(exchangeRateURL)
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({
+                        loadedExchangeRates: true,
+                        exchangeRates: result.rates,
+                    });
+                },
+                (error) => {
+                    console.log(error)
+                }
+            )
     }
+
     render() {
+        const { loadedExchangeRates, loadedCurrency, currencyOptions, exchangeRates} = this.state
+        const exchangeRateKeys = loadedExchangeRates ? Object.keys(exchangeRates) : []
+        const filterCurrencyOptions =  (loadedExchangeRates && loadedCurrency) ? currencyOptions.filter(option => exchangeRateKeys.includes(option.code)) : null;
+
         return <div>
-            { this.state.currencyOptions ? <CurrencyForm currencyOptions={this.state.currencyOptions.slice(0,10)}/> : null }
+            <Header />
+            { (loadedExchangeRates && loadedCurrency) ? <CurrencyForm currencyOptions={filterCurrencyOptions} exchangeRates={exchangeRates}/> : null }
         </div>;
     }
 }

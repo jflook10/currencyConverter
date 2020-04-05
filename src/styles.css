@@ -1,0 +1,14 @@
+.currencyDiv .inputPrefix {
+    position: absolute;
+}
+
+.currencyDiv {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.currencyInput {
+}
+
+.inputPrefix {
+}

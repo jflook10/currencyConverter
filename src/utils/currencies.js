@@ -1,1 +1,2 @@
 export const currenciesURL = "https://gist.githubusercontent.com/mddenton/062fa4caf150bdf845994fc7a3533f74/raw/27beff3509eff0d2690e593336179d4ccda530c2/Common-Currency.json"
+export const exchangeRateURL = "https://api.exchangeratesapi.io/latest?base=USD"
