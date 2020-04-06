@@ -1,14 +1,163 @@
-.currencyDiv .inputPrefix {
-    position: absolute;
+h1, h2{
+    letter-spacing: 1px;
 }
 
-.currencyDiv {
+h1 {
+    margin: 0;
+}
+
+input, select {
+    box-sizing: border-box;
+    color: rgb(0, 34, 114);
+    font-size: 1.7rem;
+    height: 50px;
+    padding-left: 20px;
     width: 100%;
-    margin-bottom: 10px;
+    background-color: rgb(255, 255, 255);
+    border-width: 0px;
+    border-radius: 5px;
 }
 
-.currencyInput {
+select {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+select option {
+    font-size: 1rem;
+    height: 25px;
+    padding: 0;
 }
 
-.inputPrefix {
+input:focus, select:focus, button:focus {
+    outline: none;
 }
+
+.app{
+    padding: 10px;
+    color: #ffffff;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/*  ------ -----start FORM------ ---------  */
+.form {
+    background-color: rgba(0, 34, 114, 0.65);
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.label {
+    margin-bottom: 5px;
+}
+
+.inputWrapper, .selectWrapper, submitBtn {
+    margin: 5px 10px 0 0
+}
+
+.selectWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.selectInput option{
+    font-size: 1rem !important;
+    height: 25px !important;
+    padding: 0 !important;
+}
+
+.maskedInputWrapper {
+    width: 100%;
+    display: flex;
+    margin-top: 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+.maskedInputWrapper .inputPrefix {
+    color: rgb(0, 34, 114);
+    align-self: center;
+    font-size: 1.25rem;
+    padding-left: 5px;
+    margin: 0;
+}
+
+.maskedInputWrapper .currencyInput {
+    padding-left: 5px;
+    max-width: 310px;
+}
+
+.submitBtn {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    max-width: 50px;
+    color: rgb(0, 34, 114);
+    padding: 5px;
+    background: rgb(252, 184, 19);
+    border-radius: 5px;
+    border-color: initial;
+}
+
+.submitBtn:disabled {
+    background-color: #75757580;
+}
+
+.submitBtn img {
+    width: 100%;
+}
+
+/*  ------ -----end FORM------ ---------  */
+
+
+/*  ------ -----start TOOLTIP------ ---------  */
+
+.tooltipWrapper {
+    position: relative;
+}
+
+.tooltipWrapper .tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    background-color: #75757580;
+    font-size: .75rem;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    margin-bottom: 5px;
+}
+
+.tooltipWrapper:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/*  ------ -----end TOOLTIP------ ---------  */
+
+
+/*  ------ -----start EXCHANGE RESULTS------ ---------  */
+.resultsWrapper {
+    margin: 20px 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.resultsToWrapper{
+    margin-top: 10px;
+}
+.convertRegularSize {
+    font-size: 2rem;
+}
+
+.convertLargeSize {
+    font-size: 3rem;
+}
+
+/*  ------ -----end EXCHANGE RESULTS------ ---------  */
+
