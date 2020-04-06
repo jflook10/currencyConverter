@@ -43,8 +43,6 @@ class CurrencyForm extends Component {
             [keyName] : currency
         })
     }
-
-    //TODO this rerenders too much IMO
     getCurrencyOptions = () => {
         const { currencyOptions } = this.props
         return currencyOptions.map(value => <option key={value.code} value={value.code}>{`${value.name}: ${value.symbol}`}</option>)
@@ -53,7 +51,7 @@ class CurrencyForm extends Component {
     render() {
         const { baseAmount, baseCurrency, exchangeCurrency } = this.state
 
-        return <form onSubmit={this.handleSubmit} className="form">
+        return <form onSubmit={this.handleSubmit} className="form" data-testid="currencyForm-form">
             <div className="inputWrapper">
                 <label className="label">
                     Base Amount
@@ -68,6 +66,7 @@ class CurrencyForm extends Component {
                         type="text"
                         autoComplete="off"
                         className="currencyInput"
+                        data-testid="currencyForm-currencyInput"
                     />
                 </div>
             </div>
@@ -75,7 +74,7 @@ class CurrencyForm extends Component {
                 <label className="label">
                     Base Currency
                 </label>
-                <select className="selectInput" value={baseCurrency.code} onChange={(e) => {this.handleCurrency("baseCurrency", e)}}>
+                <select className="selectInput" value={baseCurrency.code} onChange={(e) => {this.handleCurrency("baseCurrency", e)}} data-testid="currencyForm-baseCurrency-select">
                     {this.getCurrencyOptions()}
                 </select>
             </div>
@@ -83,7 +82,7 @@ class CurrencyForm extends Component {
                 <label className="label">
                     Exchange Currency
                 </label>
-                <select className="selectInput" value={exchangeCurrency.code} onChange={(e) => {this.handleCurrency("exchangeCurrency", e)}}>
+                <select className="selectInput" value={exchangeCurrency.code} onChange={(e) => {this.handleCurrency("exchangeCurrency", e)}} data-testid="currencyForm-exchangeCurrency-select">
                     {this.getCurrencyOptions()}
                 </select>
             </div>
@@ -93,6 +92,7 @@ class CurrencyForm extends Component {
                     type="submit"
                     onClick={e=>this.handleSubmit(e)}
                     disabled={ baseAmount === "0.00" || !baseAmount }
+                    data-testid="currencyForm-submitBtn"
                 > <img src={rightArrow} alt="right arrow"/> </button>
                 {(baseAmount === "0.00" || !baseAmount) ? <span className="tooltiptext">Please enter an amount</span> : null}
 

@@ -1,16 +1,17 @@
 import React from 'react';
-
+import accounting from 'accounting'
 import "../styles.css"
 
-//TODO fix the var declarations
 const ExchangeResults = ({baseAmount, baseCurrency, exchangeCurrency, equivalentValue}) => {
-        return (<div className="resultsWrapper">
-                    <div className="convertRegularSize">
-                        {baseCurrency.symbol} {baseAmount} {baseCurrency.code} =
+    const formattedBaseAmount = accounting.formatNumber(baseAmount, 2)
+    const formattedEquivalent = accounting.formatNumber(equivalentValue, 3)
+        return (<div className="resultsWrapper" data-testid="exchangeResults-wrapper">
+                    <div className="convertRegularSize" data-testid="exchangeResults-baseCurrency">
+                        {baseCurrency.symbol} {formattedBaseAmount} {baseCurrency.code} =
                     </div>
-                    <div className="resultsToWrapper">
+                    <div className="resultsToWrapper" data-testid="exchangeResults-exchangeCurrency">
                         <span className="convertRegularSize">{exchangeCurrency.symbol}</span>
-                        <span className="convertLargeSize"> {equivalentValue} </span>
+                        <span className="convertLargeSize"> {formattedEquivalent} </span>
                         <span className="convertRegularSize">{exchangeCurrency.code}</span>
                     </div>
                 </div>

@@ -39,14 +39,13 @@ class ExchangeBody extends Component {
                         loadedCurrency: true,
                         currencyOptions: arrResult
                     });
-                },
-                (error) => {
-                    this.setState({
-                        loadedCurrency: true,
-                    });
-                    console.log(error)
                 }
-            )
+            ).catch(error => {
+                this.setState({
+                    loadedCurrency: true,
+                });
+                console.log(error)
+        })
         fetch(exchangeRateURL)
             .then(res => res.json())
             .then(
@@ -56,10 +55,9 @@ class ExchangeBody extends Component {
                         exchangeRates: result.rates,
                     });
                 },
-                (error) => {
-                    console.log(error)
-                }
-            )
+            ).catch((error) => {
+            console.log(error)
+        })
     }
 
     handleChange(input) {
@@ -81,7 +79,7 @@ class ExchangeBody extends Component {
         fx.base = "USD"
         fx.rates = this.state.exchangeRates
 
-        return <div>
+        return <div data-testid={"exchangeBody"}>
             { ( loadedExchangeRates && loadedCurrency) ? <CurrencyForm  currencyOptions={filterCurrencyOptions} exchangeRates={exchangeRates} updateBody={(input) => this.handleChange(input)}/>: null}
             {  equivalentValue ? <ExchangeResults  baseAmount={baseAmount} baseCurrency={baseCurrency} exchangeCurrency={exchangeCurrency} equivalentValue={equivalentValue} /> : null}
         </div>
