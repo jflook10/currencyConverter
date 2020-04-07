@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 import accounting from 'accounting'
 import "../styles.css"
 
@@ -17,5 +19,12 @@ const ExchangeResults = ({baseAmount, baseCurrency, exchangeCurrency, equivalent
                 </div>
         )
     }
+
+ExchangeResults.propTypes ={
+    baseAmount: PropTypes.string.isRequired,
+    baseCurrency: PropTypes.object.isRequired,
+    exchangeCurrency: PropTypes.object.isRequired,
+    equivalentValue: PropTypes.number.isRequired,
+}
 
 export default ExchangeResults
