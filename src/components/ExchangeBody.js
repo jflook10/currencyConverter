@@ -5,6 +5,7 @@ import "../styles.css";
 import CurrencyForm from "./CurrencyForm";
 import ExchangeResults from "./ExchangeResults";
 import { currenciesURL, exchangeRateURL } from "../utils/currencies";
+import Dropdown from "./Dropdown";
 
 class ExchangeBody extends Component {
   state = {
@@ -114,6 +115,7 @@ class ExchangeBody extends Component {
             equivalentValue={equivalentValue}
           />
         ) : null}
+        <Dropdown />
       </div>
     );
   }
