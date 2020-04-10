@@ -115,7 +115,6 @@ class ExchangeBody extends Component {
             equivalentValue={equivalentValue}
           />
         ) : null}
-        <Dropdown />
       </div>
     );
   }

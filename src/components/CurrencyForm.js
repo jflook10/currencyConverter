@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import CurrencyInput from "react-currency-masked-input";
 import "../styles.css";
 import rightArrow from "../images/right-arrow.png";
+import Dropdown from "./Dropdown";
 
 class CurrencyForm extends Component {
   state = {
@@ -108,6 +109,7 @@ class CurrencyForm extends Component {
           >
             {this.getCurrencyOptions()}
           </select>
+          <Dropdown currencyOptions={this.props.currencyOptions} selected={exchangeCurrency}/>
         </div>
         <div className="tooltipWrapper">
           <button

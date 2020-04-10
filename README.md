@@ -28,3 +28,4 @@ Use React but do not include jQuery in your project.
 - money.js for conversion functions
 - accounting.js for rounding functions
 - Currency rates are available from https://api.exchangeratesapi.io/latest?base=USD
+- Font Awesome by Dave Gandy - http://fontawesome.io

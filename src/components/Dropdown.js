@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons'
 
 class Dropdown extends Component {
     state = {
         isOpen: false,
         selected: null,
+        header: "BeeBop"
     }
 
     handleClick = (e) => {
         const { isOpen } = this.state
+        e.preventDefault()
         console.log(e)
         this.setState({
             isOpen: !isOpen
@@ -25,18 +29,31 @@ class Dropdown extends Component {
     }
 
     renderList = () => {
-        return(
-            <ul>
-                <li>A</li>
-                <li>B</li>
-                <li>C</li>
-            </ul>
-        )
+        const { currencyOptions } = this.props
+        return (
+          <ul>
+            {currencyOptions.map((item) => (
+              <li
+                className="listItem"
+                onClick={(item) => this.handleLiClick(item.name)}
+                key={item.code}
+                value={item.code}
+              >{`${item.name}: ${item.symbol}`}</li>
+            ))}
+          </ul>
+        );
     }
 
     renderButton = () => {
+        const { isOpen } = this.state
+        const { selected } = this.props
         return(
-            <button onClick={this.handleClick}>Test</button>
+            <button onClick={this.handleClick}>{`${selected.name}: ${selected.symbol}`}
+                {isOpen
+                    ? <FontAwesomeIcon icon={faAngleUp} size="2x"/>
+                    : <FontAwesomeIcon icon={faAngleDown} size="2x"/>
+            }
+            </button>
         )
     }
 
@@ -45,10 +62,16 @@ class Dropdown extends Component {
         const { isOpen } = this.state
         return (
             <div>
-            { isOpen ? this.renderList() : this.renderButton() }
+                {this.renderButton()}
+            { isOpen ? this.renderList() : null }
             </div>
             )
     }
+}
+
+Dropdown.propTypes ={
+    currencyOptions: PropTypes.array.isRequired,
+    selected: PropTypes.object.isRequired,
 }
 
 export default Dropdown

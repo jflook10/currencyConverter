@@ -5,12 +5,18 @@
   "keywords": [],
   "main": "index.js",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "accounting": "^0.4.1",
+    "font-awesome": "^4.7.0",
     "money": "0.2.0",
     "prop-types": "^15.7.2",
     "react": "16.0.0",
     "react-currency-masked-input": "^2.4.0",
-    "react-dom": "16.0.1"
+    "react-dom": "16.0.1",
+    "react-dropdown": "^1.7.0"
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.2",
