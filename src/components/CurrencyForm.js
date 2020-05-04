@@ -120,8 +120,8 @@ class CurrencyForm extends Component {
             {" "}
             <img src={rightArrow} alt="right arrow" />{" "}
           </button>
-          {baseAmount === "0.00" || !baseAmount ? (
-            <span className="tooltiptext">Please enter an amount</span>
+          {(baseAmount === "0.00" || !baseAmount) ? (
+            <span className="tooltiptext" data-testid="currencyForm-tooltip">Please enter an amount</span>
           ) : null}
         </div>
       </form>
